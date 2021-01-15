@@ -28,15 +28,28 @@ class TestEnigma < MiniTest::Test
     assert_equal "111101", @enigma.date_conversion
   end
 
+  def test_cypher
+    @enigma.stubs(:key_gen).returns("02715")
+    Date.stubs(:today).returns(Date.new(1995, 4, 8))
+    expected = {A: 3, B: 27, C: 73, D: 20}
+    assert_equal expected, @enigma.cypher
+  end
+
+  def test_message_encrypted
+    @enigma.stubs(:key_gen).returns("02715")
+    Date.stubs(:today).returns(Date.new(1995, 4, 8))
+    assert_equal "", @enigma.message_encrypted("hello world")
+  end
+
   def test_encryption
-    @enigma.stubs(:key_gen).returns("12345")
+    @enigma.stubs(:key_gen).returns("02715")
     Date.stubs(:today).returns(Date.new(2001, 11, 11))
     expected = {message: "keder ohulw",
                 key: "02715",
                 date: "040895"}
     expected2 = {message: "keder ohulw",
-                  key: "12345",
-                  date: "111101"}
+                  key: "02715",
+                  date: "040895"}
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
     assert_equal expected2, @enigma.encrypt("hello world")
   end
