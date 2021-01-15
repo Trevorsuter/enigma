@@ -22,6 +22,19 @@ class Enigma
     date = String.new(month_day + year)
   end
 
+  def cypher
+    date_cypher = ((date_conversion.to_i ** 2).to_s)[-4..-1]
+    cypher = Hash.new
+    cypher[:A] = key_gen[0..1].to_i * date_cypher[0].to_i
+    cypher[:B] = key_gen[1..2].to_i * date_cypher[1].to_i
+    cypher[:C] = key_gen[2..3].to_i * date_cypher[2].to_i
+    cypher[:D] = key_gen[3..4].to_i * date_cypher[3].to_i
+    cypher
+  end
+
+  def message_encrypted(message)  
+  end
+
   def encrypt(message, key = key_gen, date = date_conversion)
     encryption = Hash.new
     encryption[:message] = message
