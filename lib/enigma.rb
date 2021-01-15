@@ -25,14 +25,23 @@ class Enigma
   def cypher
     date_cypher = ((date_conversion.to_i ** 2).to_s)[-4..-1]
     cypher = Hash.new
-    cypher[:A] = key_gen[0..1].to_i * date_cypher[0].to_i
-    cypher[:B] = key_gen[1..2].to_i * date_cypher[1].to_i
-    cypher[:C] = key_gen[2..3].to_i * date_cypher[2].to_i
-    cypher[:D] = key_gen[3..4].to_i * date_cypher[3].to_i
+    cypher[:A] = key_gen[0..1].to_i + date_cypher[0].to_i
+    cypher[:B] = key_gen[1..2].to_i + date_cypher[1].to_i
+    cypher[:C] = key_gen[2..3].to_i + date_cypher[2].to_i
+    cypher[:D] = key_gen[3..4].to_i + date_cypher[3].to_i
     cypher
   end
 
-  def message_encrypted(message)  
+  def message_encrypted(message)
+    File.new('data/encrypted.txt')
+    chars = message.chars
+    indexs = []
+    encrypted_indexs = []
+    chars.select do |char|
+      indexs << character_set.index(char)
+    end
+    # require 'pry'; binding.pry
+    encrypted_indexs
   end
 
   def encrypt(message, key = key_gen, date = date_conversion)
