@@ -15,4 +15,8 @@ class TestCypher < Minitest::Test
   def test_it_exists
     assert_instance_of Cypher, @cypher
   end
+
+  def test_date_is_cleaned
+    assert_equal "040895", @cypher.date
+  end
 end
