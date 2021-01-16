@@ -13,5 +13,6 @@ class TestEncryption < MiniTest::Test
   def test_it_exists_with_attributes
     assert_instance_of Encryption, @encryption
     assert_equal "hello world", @encryption.message
+    assert_equal "", @encryption.encrypted_message
   end
 end
