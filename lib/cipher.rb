@@ -1,6 +1,6 @@
 require './lib/date_cleaner'
 
-class Cypher
+class Cipher
   include DateCleaner
 
   def date
@@ -19,7 +19,7 @@ class Cypher
     generated_key
   end
 
-  def cypher_hash
+  def cipher_hash
     date_cypher = ((date.to_i ** 2).to_s)[-4..-1]
     cypher = Hash.new
     cypher[:A] = key_gen[0..1].to_i + date_cypher[0].to_i
