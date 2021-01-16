@@ -19,4 +19,8 @@ class TestCypher < Minitest::Test
   def test_date_is_cleaned
     assert_equal "040895", @cypher.date
   end
+
+  def test_key_gen  
+    assert_equal 5, @cypher.key_gen.length
+  end
 end
