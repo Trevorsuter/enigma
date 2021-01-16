@@ -23,4 +23,9 @@ class TestCypher < Minitest::Test
   def test_key_gen  
     assert_equal 5, @cypher.key_gen.length
   end
+
+  def test_character_set
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    assert_equal expected, @cypher.character_set
+  end
 end
