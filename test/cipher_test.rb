@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/minitest'
 require 'pry'
-require './lib/cypher'
+require './lib/cipher'
 
 class TestCipher < Minitest::Test
 
@@ -29,7 +29,7 @@ class TestCipher < Minitest::Test
     assert_equal expected, @cipher.character_set
   end
 
-  def test_cypher_hash
+  def test_cipher_hash
     expected = {A: 3, B: 27, C: 73, D: 20}
     assert_equal expected, @cipher.cipher_hash
   end
