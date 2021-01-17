@@ -47,10 +47,7 @@ class TestEnigma < MiniTest::Test
     expected = {message: "keder ohulw",
                 key: "02715",
                 date: "040895"}
-    expected2 = {message: "keder ohulw",
-                  key: "02715",
-                  date: "040895"}
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
-    assert_equal expected2, @enigma.encrypt("hello world")
+    assert_equal expected, @enigma.encrypt("hello world")
   end
 end
