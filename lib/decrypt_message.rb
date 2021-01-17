@@ -27,4 +27,14 @@ class DecryptMessage
     month_day.slice!(0,4)
     date = String.new(month_day + year)
   end
+
+  def cypher
+    date_cypher = ((date.to_i ** 2).to_s)[-4..-1]
+    cypher = Hash.new
+    cypher[:A] = key[0..1].to_i + date_cypher[0].to_i
+    cypher[:B] = key[1..2].to_i + date_cypher[1].to_i
+    cypher[:C] = key[2..3].to_i + date_cypher[2].to_i
+    cypher[:D] = key[3..4].to_i + date_cypher[3].to_i
+    cypher
+  end
 end

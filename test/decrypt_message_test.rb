@@ -24,4 +24,9 @@ class TestDecryptMessage < MiniTest::Test
     assert_equal 5, @dm.key.length
     assert_equal DecryptMessage.date_conversion, @dm2.date
   end
+
+  def test_cypher
+    expected = {A: 3, B: 27, C: 73, D: 20}
+    assert_equal expected, @dm.cypher
+  end
 end
