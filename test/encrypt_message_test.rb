@@ -16,7 +16,8 @@ class TestEncryptMessage < MiniTest::Test
   end
 
   def test_message_is_compatible
-    assert_equal "hello world ", @em.compatible_message
-    assert_equal 12, @em.compatible_message.length
+    @em.compatible_message
+    assert_equal "hello world ", @em.message
+    assert_equal 12, @em.message.length
   end
 end
