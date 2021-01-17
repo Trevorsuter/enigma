@@ -33,15 +33,37 @@ class Enigma
   end
 
   def message_encrypted(message)
-    File.new('data/encrypted.txt')
-    chars = message.chars
-    indexs = []
-    encrypted_indexs = []
-    chars.select do |char|
-      indexs << character_set.index(char)
+    until message.length % 4 == 0
+      message += " "
     end
-    # require 'pry'; binding.pry
-    encrypted_indexs
+    split_message = (message.scan(/..../))
+    separated = split_message.map do |split_mess|
+      split_mess.chars
+    end
+    separate_ords = separated.map do |separate|
+      separate.map do |char|
+       if char.ord == 32
+        char.ord - 1000
+       else
+        char.ord
+       end
+      end
+    end
+    crypted = separate_ords.select do |ords|
+      ords[0] += cypher[:A]
+      ords[1] += cypher[:B]
+      ords[2] += cypher[:C]
+      ords[3] += cypher[:D]
+    end
+    crypted.map do |crypt|
+      crypt.flat_map do |ord|
+        if ord < 0
+          " "
+        else
+          ord.chr
+        end
+      end
+    end
   end
 
   def encrypt(message, key = key_gen, date = date_conversion)
