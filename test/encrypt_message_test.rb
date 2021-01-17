@@ -7,14 +7,32 @@ require './lib/encrypt_message'
 class TestEncryptMessage < MiniTest::Test
 
   def setup
-    @em = EncryptMessage.new("hello world")
-    @em.stubs(:key_gen).returns("02715")
-    Date.stubs(:today).returns(Date.new(1995, 4, 8))
+    @em = EncryptMessage.new("hello world", "02715", "040895")
   end
 
   def test_it_exists
     assert_instance_of EncryptMessage, @em
     assert_equal "hello world", @em.message
+  end
+
+  def test_character_set
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    assert_equal expected, @em.character_set
+  end
+
+  def test_key
+    assert_equal 5, @em.key.length
+  end
+
+  def test_date_conversion
+    assert_equal "040895", @em.date
+  end
+
+  def test_cypher
+    @em.stubs(:key).returns("02715")
+    Date.stubs(:today).returns(Date.new(1995, 4, 8))
+    expected = {A: 3, B: 27, C: 73, D: 20}
+    assert_equal expected, @em.cypher
   end
 
   def test_message_is_compatible
