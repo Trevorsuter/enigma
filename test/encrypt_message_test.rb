@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'mocha/minitest'
-require 'pry'
+require './test/test_helper'
 require './lib/encrypt_message'
 
 class TestEncryptMessage < MiniTest::Test
@@ -22,6 +19,8 @@ class TestEncryptMessage < MiniTest::Test
 
   def test_key
     assert_equal 5, @em.key.length
+    @em2 = EncryptMessage.new("hello world")
+    assert_equal 5, @em2.key.length
   end
 
   def test_date_conversion
