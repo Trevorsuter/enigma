@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'mocha/minitest'
-require 'pry'
+require './test/test_helper'
 require './lib/encrypt_message'
 require './lib/enigma'
 require './lib/character_set'

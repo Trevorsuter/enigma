@@ -4,7 +4,7 @@ class EncryptMessage
   include CharacterSet
   attr_reader :message, :key, :date
 
-  def initialize(message, key = key_gen, date = date_conversion)
+  def initialize(message, key = EncryptMessage.key_gen, date = EncryptMessage.date_conversion)
     @message = message
     @key = key
     @date = date
