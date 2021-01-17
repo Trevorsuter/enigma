@@ -49,4 +49,10 @@ class TestDecryptMessage < MiniTest::Test
     expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22, 26]]
     assert_equal expected, @dm.separated_indexs
   end
+
+  def test_character_set_indexs
+    assert_equal 27, @dm.character_set_indexs.length
+    assert_equal 0, @dm.character_set_indexs.first
+    assert_equal 26, @dm.character_set_indexs.last
+  end
 end
