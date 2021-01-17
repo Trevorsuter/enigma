@@ -44,4 +44,9 @@ class TestDecryptMessage < MiniTest::Test
     expected = [["k", "e", "d", "e"], ["r", " ", "o", "h"], ["u", "l", "w", " "]]
     assert_equal expected, @dm.separated_characters
   end
+
+  def test_separated_indexs
+    expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22, 26]]
+    assert_equal expected, @dm.separated_indexs
+  end
 end

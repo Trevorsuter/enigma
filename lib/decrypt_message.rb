@@ -55,4 +55,12 @@ class DecryptMessage
       split_mess.chars
     end
   end
+
+  def separated_indexs
+    separated_characters.map do |separate|
+      separate.map do |char|
+        character_set.index(char)
+      end
+    end
+  end
 end
