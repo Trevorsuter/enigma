@@ -32,7 +32,7 @@ class TestEncryptMessage < MiniTest::Test
   end
 
   def test_separated_character_ordinates
-    expected = [[104, 101, 108, 108], [111, -968, 119, 111], [114, 108, 100, -968]]
-    assert_equal expected, @em.ordinates
+    expected = [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3, 26]]
+    assert_equal expected, @em.separated_indexs
   end
 end

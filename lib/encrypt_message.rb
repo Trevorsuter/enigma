@@ -1,4 +1,7 @@
+require './lib/caesar_cipher'
+
 class EncryptMessage
+  include CaesarCipher
   attr_reader :message
 
   def initialize(message)
@@ -24,14 +27,10 @@ class EncryptMessage
     end
   end
 
-  def ordinates
+  def separated_indexs
     separated_characters.map do |separate|
       separate.map do |char|
-       if char.ord == 32
-        char.ord - 1000
-       else
-        char.ord
-       end
+        character_set.index(char)
       end
     end
   end
