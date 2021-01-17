@@ -43,39 +43,32 @@ class Enigma
       split_mess.chars
     end
 
-    separate_ords = separated.map do |separate|
+    separate_indexs = separated.map do |separate|
       separate.map do |char|
-       if char.ord == 32
-        char.ord - 1000
-       else
-        char.ord
-       end
+      character_set.index(char)
       end
     end
-
-    char_ord = character_set.map do |char|
-      char.ord
+    char_index = character_set.map do |char|
+      character_set.index(char)
     end
 
-    crypted = separate_ords.select do |ords|
-      ords[0] += cypher[:A]
-      ords[1] += cypher[:B]
-      ords[2] += cypher[:C]
-      ords[3] += cypher[:D]
+    crypted = separate_indexs.select do |index|
+      index[0] += cypher[:A]
+      index[1] += cypher[:B]
+      index[2] += cypher[:C]
+      index[3] += cypher[:D]
     end.flatten!
 
-    almost_finished = crypted.map do |ord|
-      if ord < 0
-          " "
-      elsif ord > 122
-        ord -= 27 until char_ord.include?(ord)
-        ord.chr
+    almost_finished = crypted.map do |index|
+      if index > 26
+        index -= 27 until char_index.include?(index)
+        character_set[index]
       else
-        ord.chr
+        character_set[index]
       end
     end
 
-    unless almost_finished[-1] != " "
+    unless almost_finished.length != message.length
       almost_finished.pop
     end
     almost_finished.join("")
