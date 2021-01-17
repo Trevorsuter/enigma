@@ -8,6 +8,8 @@ class TestEncryptMessage < MiniTest::Test
 
   def setup
     @em = EncryptMessage.new("hello world")
+    @em.stubs(:key_gen).returns("02715")
+    Date.stubs(:today).returns(Date.new(1995, 4, 8))
   end
 
   def test_it_exists
@@ -43,9 +45,12 @@ class TestEncryptMessage < MiniTest::Test
   end
 
   def test_cripted_indexs
-    @em.stubs(:key_gen).returns("02715")
-    Date.stubs(:today).returns(Date.new(1995, 4, 8))
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76, 46]
     assert_equal expected, @em.cripted_indexs
+  end
+
+  def test_index_to_characters
+    expected = ["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w", "t"]
+    assert_equal expected, @em.index_to_characters
   end
 end

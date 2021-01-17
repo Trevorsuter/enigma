@@ -49,4 +49,15 @@ class EncryptMessage
       index[3] += cypher[:D]
     end.flatten!
   end
+
+  def index_to_characters
+    cripted_indexs.map do |index|
+      if index > 26
+        index -= 27 until character_set_indexs.include?(index)
+        character_set[index]
+      else
+        character_set[index]
+      end
+    end
+  end
 end
