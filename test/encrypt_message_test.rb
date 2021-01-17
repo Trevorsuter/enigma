@@ -17,7 +17,12 @@ class TestEncryptMessage < MiniTest::Test
 
   def test_message_is_compatible
     @em.compatible_message
-    assert_equal "hello world ", @em.message
-    assert_equal 12, @em.message.length
+    assert_equal "hello world ", @em.compatible_message
+    assert_equal 12, @em.compatible_message.length
+  end
+
+  def test_it_can_split_message_into_fours
+    expected = ["hell", "o wo", "rld "]
+    assert_equal expected, @em.split_message_into_fours
   end
 end
