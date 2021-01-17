@@ -35,8 +35,13 @@ class TestDecryptMessage < MiniTest::Test
     assert_equal 12, @dm.compatible_message.length
   end
 
-  def def test_it_can_split_message_into_fours
+  def test_it_can_split_message_into_fours
     expected = ["kede", "r oh", "ulw "]
     assert_equal expected, @dm.split_message_into_fours
+  end
+
+  def test_separated_characters
+    expected = [["k", "e", "d", "e"], ["r", " ", "o", "h"], ["u", "l", "w", " "]]
+    assert_equal expected, @dm.separated_characters
   end
 end

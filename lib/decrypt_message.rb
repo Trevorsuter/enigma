@@ -49,4 +49,10 @@ class DecryptMessage
   def split_message_into_fours
     compatible_message.scan(/..../)
   end
+
+  def separated_characters
+    split_message_into_fours.map do |split_mess|
+      split_mess.chars
+    end
+  end
 end
