@@ -25,4 +25,14 @@ class TestEncryptMessage < MiniTest::Test
     expected = ["hell", "o wo", "rld "]
     assert_equal expected, @em.split_message_into_fours
   end
+
+  def test_separated_characters
+    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", " "]]
+    assert_equal expected, @em.separated_characters
+  end
+
+  def test_separated_character_ordinates
+    expected = [[104, 101, 108, 108], [111, -968, 119, 111], [114, 108, 100, -968]]
+    assert_equal expected, @em.ordinates
+  end
 end
