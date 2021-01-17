@@ -6,7 +6,6 @@ class EncryptMessage
 
   def initialize(message)
     @message = message
-    @encrypted = ""
   end
 
   def compatible_message
@@ -59,5 +58,13 @@ class EncryptMessage
         character_set[index]
       end
     end
+  end
+
+  def encrypted_message
+    encripted = index_to_characters.join
+    unless encripted.length == message.length
+      encripted.delete!(encripted[-1])
+    end
+    encripted
   end
 end
