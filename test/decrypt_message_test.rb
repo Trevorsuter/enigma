@@ -60,4 +60,14 @@ class TestDecryptMessage < MiniTest::Test
     expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51, 6]
     assert_equal expected, @dm.cripted_indexs
   end
+
+  def test_index_to_characters
+    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "g"]
+    assert_equal expected, @dm.index_to_characters
+  end
+
+  def test_encrypted_message
+    expected = "hello world"
+    assert_equal expected, @dm.encrypted_message
+  end
 end
