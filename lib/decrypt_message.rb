@@ -69,4 +69,13 @@ class DecryptMessage
       character_set.index(char)
     end
   end
+
+  def cripted_indexs
+    separated_indexs.select do |index|
+      index[0] -= cypher[:A]
+      index[1] -= cypher[:B]
+      index[2] -= cypher[:C]
+      index[3] -= cypher[:D]
+    end.flatten!
+  end
 end

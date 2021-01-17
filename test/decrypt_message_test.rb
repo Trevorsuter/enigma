@@ -55,4 +55,9 @@ class TestDecryptMessage < MiniTest::Test
     assert_equal 0, @dm.character_set_indexs.first
     assert_equal 26, @dm.character_set_indexs.last
   end
+
+  def test_cripted_indexs
+    expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51, 6]
+    assert_equal expected, @dm.cripted_indexs
+  end
 end
