@@ -41,4 +41,11 @@ class TestEncryptMessage < MiniTest::Test
     assert_equal 0, @em.character_set_indexs.first
     assert_equal 26, @em.character_set_indexs.last
   end
+
+  def test_cripted_indexs
+    @em.stubs(:key_gen).returns("02715")
+    Date.stubs(:today).returns(Date.new(1995, 4, 8))
+    expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76, 46]
+    assert_equal expected, @em.cripted_indexs
+  end
 end
