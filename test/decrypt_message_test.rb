@@ -29,4 +29,14 @@ class TestDecryptMessage < MiniTest::Test
     expected = {A: 3, B: 27, C: 73, D: 20}
     assert_equal expected, @dm.cypher
   end
+
+  def test_message_is_compatible
+    assert_equal "keder ohulw ", @dm.compatible_message
+    assert_equal 12, @dm.compatible_message.length
+  end
+
+  def def test_it_can_split_message_into_fours
+    expected = ["kede", "r oh", "ulw "]
+    assert_equal expected, @dm.split_message_into_fours
+  end
 end

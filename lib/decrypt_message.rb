@@ -37,4 +37,16 @@ class DecryptMessage
     cypher[:D] = key[3..4].to_i + date_cypher[3].to_i
     cypher
   end
+
+  def compatible_message
+    compatible = @message
+    until compatible.length % 4 == 0
+      compatible += " "
+    end
+    compatible
+  end
+
+  def split_message_into_fours
+    compatible_message.scan(/..../)
+  end
 end
