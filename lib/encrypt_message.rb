@@ -34,4 +34,10 @@ class EncryptMessage
       end
     end
   end
+
+  def character_set_indexs
+    character_set.map do |char|
+      character_set.index(char)
+    end
+  end
 end
