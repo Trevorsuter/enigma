@@ -2,6 +2,7 @@ require './lib/character_set'
 require 'date'
 
 class DecryptMessage
+  include CharacterSet
   attr_reader :message, :key, :date
 
   def initialize (message, key = DecryptMessage.key_gen, date = DecryptMessage.date_conversion)
