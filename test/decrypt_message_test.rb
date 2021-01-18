@@ -62,7 +62,7 @@ class TestDecryptMessage < MiniTest::Test
   end
 
   def test_index_to_characters
-    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "g"]
+    expected = "hello worldg"
     assert_equal expected, @dm.index_to_characters
   end
 
