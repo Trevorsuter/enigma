@@ -19,7 +19,7 @@ class TestEnigma < MiniTest::Test
   end
 
   def test_encryption
-    EncryptMessage.stubs(:key_gen).returns("02715")
+    @enigma.stubs(:key_gen).returns("02715")
     Date.stubs(:today).returns(Date.new(1995, 4, 8))
     expected = {encryption: "keder ohulw",
                 key: "02715",
@@ -28,8 +28,8 @@ class TestEnigma < MiniTest::Test
     assert_equal expected, @enigma.encrypt("hello world")
   end
 
-  def test_encryption
-    DecryptMessage.stubs(:key_gen).returns("02715")
+  def test_decryption
+    @enigma.stubs(:key_gen).returns("02715")
     Date.stubs(:today).returns(Date.new(1995, 4, 8))
     expected = {decryption: "hello world",
                 key: "02715",

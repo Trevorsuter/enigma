@@ -21,8 +21,8 @@ class TestDecryptMessage < MiniTest::Test
 
   def test_it_can_generate_its_own_key_and_date
     @dm2 = DecryptMessage.new("keder ohulw")
-    assert_equal 5, @dm.key.length
-    assert_equal DecryptMessage.date_conversion, @dm2.date
+    assert_equal 5, @dm2.key.length
+    assert_equal @dm2.date_conversion, @dm2.date
   end
 
   def test_cypher
