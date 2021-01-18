@@ -1,12 +1,12 @@
 require 'date'
-require './lib/character_set'
 require './lib/encrypt_message'
 require './lib/decrypt_message'
+require './lib/caesar_cipher'
 
 class Enigma
-  include CharacterSet
+  include CaesarCipher
 
-  def encrypt(encryption, key = EncryptMessage.key_gen, date = EncryptMessage.date_conversion)
+  def encrypt(encryption, key = key_gen, date = date_conversion)
     encripted = EncryptMessage.new(encryption, key, date)
     encryption = Hash.new
     encryption[:encryption] = encripted.encrypted_message
@@ -15,7 +15,7 @@ class Enigma
     encryption
   end
 
-  def decrypt(decryption, key = DecryptMessage.key_gen, date = DecryptMessage.date_conversion)
+  def decrypt(decryption, key = key_gen, date = date_conversion)
     decrypt = DecryptMessage.new(decryption, key, date)
     decryption = Hash.new
     encryption = Hash.new
