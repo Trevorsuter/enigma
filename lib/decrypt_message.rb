@@ -81,20 +81,15 @@ class DecryptMessage
 
   def index_to_characters
     cripted_indexs.map do |index|
-      if index < 26
-        index += 27 until character_set_indexs.include?(index)
-        character_set[index]
-      else
-        character_set[index]
-      end
-    end
+      character_set.rotate(index)[0]
+    end.join
   end
 
   def encrypted_message
-    encripted = index_to_characters.join
-    unless encripted.length == message.length
-      encripted.delete!(encripted[-1])
+    encrypted = index_to_characters
+    unless encrypted.length == message.length
+      encrypted.delete!(encrypted[-1])
     end
-    encripted
+    encrypted
   end
 end
