@@ -1,7 +1,6 @@
 require './test/test_helper'
 require './lib/encrypt_message'
 require './lib/enigma'
-require './lib/character_set'
 
 class TestEnigma < MiniTest::Test
 

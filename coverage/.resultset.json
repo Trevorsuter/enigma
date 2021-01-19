@@ -267,7 +267,6 @@
           1,
           1,
           1,
-          1,
           null,
           1,
           null,
@@ -336,18 +335,8 @@
           null,
           null
         ]
-      },
-      "/Users/trevorsuter/turing/projects/enigma/lib/character_set.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
       }
     },
-    "timestamp": 1611009486
+    "timestamp": 1611016129
   }
 }
